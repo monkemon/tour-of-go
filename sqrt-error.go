@@ -18,25 +18,22 @@ func (e ErrNegativeSqrt) Error() string {
 	return fmt.Sprintf("Cannot Sqrt negative numbers: %v", float64(e))
 }
 
-func Sqrt(x float64) (float64, ErrNegativeSqrt) {
+func Sqrt(x float64) (float64, error) {
 	before := x
-	z      := x
-	
-	err := nil
+	z      := 1.0
 	
 	
 	if x < 0 {
-		err = ErrNegativeSqrt(x)
-		return x, err
+		return 0, ErrNegativeSqrt(x)
 	}
 	for i := 0; i < 100; i++ {
 		z -= (z * z - x) / (2 * z)
 		if delta := z - before; delta > -0.0000001 {
-			return z, err
+			return z, nil
 		}
 		before = z
 	}
-	return z, err
+	return z, nil
 }
 
 func main() {

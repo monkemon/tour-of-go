@@ -1,3 +1,11 @@
+// Solution to https://go.dev/tour/methods/20
+
+/*
+Copy your Sqrt function from the earlier exercise and modify it to return an error value.
+
+Sqrt should return a non-nil error value when given a negative number, as it doesn't support complex numbers.
+*/
+
 package main
 
 import (
